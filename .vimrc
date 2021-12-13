@@ -14,6 +14,7 @@ Plug 'tpope/vim-endwise'                          " wisely add 'end' in ruby, en
 Plug 'tpope/vim-surround'                         " makes working w/ quotes, braces,etc. easier
 Plug 'lmeijvogel/vim-yaml-helper'                 " navigate yaml files more easily
 Plug 'w0rp/ale'                                   " alternative to syntastic
+Plug 'junegunn/fzf',                              { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'                           " fuzzy finder
 Plug 'rking/ag.vim'                               " search for file contents
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -199,4 +200,3 @@ au BufRead,BufNewFile *.txt,*.md,*.markdown,*.rdoc set wrap linebreak nolist tex
 
 " Save on exit insert mode
 autocmd InsertLeave * write
-
