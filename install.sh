@@ -1,6 +1,9 @@
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.agignore ~/.agignore
+
+ln -sf ~/dotfiles/.solargraph.yml $HOME/src/*/*/*
 ln -sf ~/dotfiles/localinstall.sh $HOME/src/*/*/*
+
 cat ~/dotfiles/.zshrc >> ~/.zshrc
 
 if ! command -v fzf &> /dev/null; then

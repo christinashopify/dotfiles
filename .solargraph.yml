@@ -1,0 +1,14 @@
+---
+include:
+- "**/*.rb"
+exclude:
+- bin/**/*
+- db/**/*
+- test/**/*
+- vendor/**/*
+- ".bundle/**/*"
+require: []
+domains: []
+require_paths: []
+plugins: []
+max_files: 5000

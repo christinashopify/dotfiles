@@ -2,27 +2,6 @@
 " Install / load plugins
 "#############################################################################
 
-call plug#begin()
-
-Plug 'airblade/vim-gitgutter'                     " shows a git diff in the gutter (sign column) and stages/reverts hunks
-Plug 'vim-airline/vim-airline'                    " more informative status/tabline
-Plug 'vim-airline/vim-airline-themes'             " airline styling
-Plug 'chrisbra/csv.vim'                           " Filetype plugin for csv files
-Plug 'scrooloose/nerdcommenter'                   " quickly (un)comment lines
-Plug 'scrooloose/nerdtree'                        " A tree explorer plugin
-Plug 'tpope/vim-endwise'                          " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
-Plug 'tpope/vim-surround'                         " makes working w/ quotes, braces,etc. easier
-Plug 'lmeijvogel/vim-yaml-helper'                 " navigate yaml files more easily
-Plug 'w0rp/ale'                                   " alternative to syntastic
-Plug 'junegunn/fzf',                              { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'                           " fuzzy finder
-Plug 'rking/ag.vim'                               " search for file contents
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'honza/vim-snippets'
-
-call plug#end()
-
 set nocompatible
 
 set autoread
@@ -102,6 +81,23 @@ nnoremap <M-x>      :Commands<CR>
 nnoremap <leader>t  :Files<cr>
 nnoremap <leader>b  :Buffers<cr>
 let g:fzf_commands_expect = 'enter'
+
+" coq
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_global_extensions = ['coc-solargraph']
 
 "#############################################################################
 " Keymaps
@@ -200,3 +196,25 @@ au BufRead,BufNewFile *.txt,*.md,*.markdown,*.rdoc set wrap linebreak nolist tex
 
 " Save on exit insert mode
 autocmd InsertLeave * write
+
+call plug#begin()
+
+Plug 'airblade/vim-gitgutter'                     " shows a git diff in the gutter (sign column) and stages/reverts hunks
+Plug 'vim-airline/vim-airline'                    " more informative status/tabline
+Plug 'vim-airline/vim-airline-themes'             " airline styling
+Plug 'chrisbra/csv.vim'                           " Filetype plugin for csv files
+Plug 'scrooloose/nerdcommenter'                   " quickly (un)comment lines
+Plug 'scrooloose/nerdtree'                        " A tree explorer plugin
+Plug 'tpope/vim-endwise'                          " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
+Plug 'tpope/vim-surround'                         " makes working w/ quotes, braces,etc. easier
+Plug 'lmeijvogel/vim-yaml-helper'                 " navigate yaml files more easily
+Plug 'w0rp/ale'                                   " alternative to syntastic
+Plug 'junegunn/fzf',                              { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'                           " fuzzy finder
+Plug 'rking/ag.vim'                               " search for file contents
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()

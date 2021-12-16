@@ -1,3 +1,7 @@
+echo 'localinstall.sh' >> .gitignore
+echo '.solargraph.yml' >> .gitignore
+
 gem install ripper-tags
 ripper-tags -R --exclude=vendor
-echo 'localinstall.sh' >> .gitignore
+
+gem install solargraph
