@@ -1,6 +1,6 @@
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.agignore ~/.agignore
-ln -sf ~/dotfiles/.zshrc ~/.zshrc
+cat ~/dotfiles/.zshrc >> ~/.zshrc
 
 if ! command -v fzf &> /dev/null; then
   sudo apt-get install -y fzf
