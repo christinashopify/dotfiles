@@ -13,6 +13,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 vim +PlugInstall +qall
 
 # tag repo 
+(
 cd ~/src/*/*/*    
 gem install ripper-tags
 ripper-tags -R --exclude=vendor
+)
