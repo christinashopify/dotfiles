@@ -14,6 +14,4 @@ vim +PlugInstall +qall
 
 
 # tag repo
-gem install ripper-tags
-cd ~/src/*/*/*
-ripper-tags -R --exclude=vendor
+gem install ripper-tags --bindir /home/spin/.bundle/$(/bin/ls ~/src/*/*)/bin --user-install /home/spin/.bundle/$(/bin/ls ~/src/*/*)
