@@ -1,8 +1,10 @@
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.agignore ~/.agignore
 
-ln -sf ~/dotfiles/.solargraph.yml $HOME/src/*/*/*
-ln -sf ~/dotfiles/localinstall.sh $HOME/src/*/*/*
+for repo in $(find $HOME/src/github.com/Shopify -maxdepth 1 -mindepth 1); do
+  ln -sf ~/dotfiles/.solargraph.yml $repo 
+  ln -sf ~/dotfiles/localinstall.sh $repo 
+done
 
 cat ~/dotfiles/.zshrc >> ~/.zshrc
 
