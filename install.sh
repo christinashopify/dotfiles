@@ -20,7 +20,6 @@ for repo in $(find $HOME/src/github.com/Shopify -maxdepth 1 -mindepth 1); do
   cd $repo
   export GEM_HOME="$HOME/.gem"
   gem install ripper-tags
-  gem install solargraph
   export PATH=$PATH:$HOME/.gem/bin
   $HOME/.gem/bin/ripper-tags -R --exclude=vendor
 done
