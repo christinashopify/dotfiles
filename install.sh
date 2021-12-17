@@ -3,7 +3,7 @@ ln -sf ~/dotfiles/.agignore ~/.agignore
 
 for repo in $(find $HOME/src/github.com/Shopify -maxdepth 1 -mindepth 1); do
   ln -sf ~/dotfiles/.solargraph.yml $repo 
-  ln -sf ~/dotfiles/localinstall.sh $repo 
+  ln -sf ~/dotfiles/repoinstall.sh $repo 
 done
 
 cat ~/dotfiles/.zshrc >> ~/.zshrc
