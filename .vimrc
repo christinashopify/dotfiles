@@ -73,6 +73,19 @@ let g:ale_javascript_prettier_use_local_config = 1
 " Jsx syntax highlighting will work on .js files
 let g:jsx_ext_required = 0
 
+" relative path  (src/foo.txt)
+nnoremap <leader>yf :let @+=expand("%")<CR>
+" relative path:line number  (src/foo.txt:23)
+nnoremap <leader>yy :let @+=expand("%") . ':' . line(".")<CR>
+" filename       (foo.txt)
+nnoremap <leader>yn :let @+=expand("%:t")<CR>
+" directory name (/something/src)
+nnoremap <leader>yd :let @*=expand("%:p:h")<CR>
+
+" vim-test
+let test#strategy = 'neovim'
+let test#neovim#term_position = "vert 80"
+
 " fzf
 " use control c or g to exit
 imap     <c-x><c-l> <plug>(fzf-complete-line)
@@ -97,7 +110,10 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_global_extensions = ['coc-solargraph']
+nmap <silent> gd :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 "#############################################################################
 " Keymaps
@@ -159,22 +175,10 @@ nnoremap <C-l> <C-w>l
 "Use the system clipboard when copying to the buffer
 set clipboard^=unnamed
 
-" Luki's black magic
-function! s:toggle_spec()
-  let extension = expand("%:e")
-  let name = expand("%:t")
-  let folder = expand("%:h:t")
-  if stridx(name, '_spec') == -1
-    return '/' . folder . '/' . substitute(name, '.' . extension, '_spec.' . extension, '')
-  else
-    return '/' . folder . '/' . substitute(name, '_spec.' . extension, '.' . extension, '')
-  endif
-endfunction
-
-command! -bang -nargs=? -complete=dir ToggleSpec
-    \ call fzf#vim#files('', {'options': '-q"' . s:toggle_spec() .'$ "'})
-
-noremap <leader>p :ToggleSpec<CR>
+nmap <silent> <leader>p :TestNearest<CR>
+nmap <silent> <leader>f :TestFile<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 "#############################################################################
 " Autocommands
@@ -215,6 +219,11 @@ Plug 'rking/ag.vim'                               " search for file contents
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'vim-scripts/coc-type-definition'
+Plug 'vim-scripts/coc-implementation'
+Plug 'vim-scripts/coc-references'
+Plug 'github/copilot.vim'
+Plug 'vim-test/vim-test'
 
 call plug#end()

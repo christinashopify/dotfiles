@@ -1,6 +1,8 @@
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.agignore ~/.agignore
+mkdir ~/.vim
+ln -sf ~/dotfiles/.coc-settings.json ~/.vim/.coc-settings.json
 
 cat ~/dotfiles/.zshrc >> ~/.zshrc
 
@@ -15,9 +17,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 vim +PlugInstall +qall
 
 for repo in $(find $HOME/src/github.com/Shopify -maxdepth 1 -mindepth 1); do
-  ln -sf ~/dotfiles/.solargraph.yml $repo
-  echo '.solargraph.yml' >> $repo/.git/info/exclude
-
   cd $repo
   export GEM_HOME="$HOME/.gem"
   gem install ripper-tags
