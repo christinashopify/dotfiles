@@ -221,7 +221,7 @@ Plug 'rking/ag.vim'                               " search for file contents
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-scripts/coc-type-definition'
 Plug 'vim-scripts/coc-implementation'
 Plug 'vim-scripts/coc-references'
