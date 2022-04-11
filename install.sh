@@ -1,7 +1,6 @@
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.agignore ~/.agignore
-mkdir ~/.config
 mkdir ~/.config/nvim
 ln -sf ~/dotfiles/.config/nvim/.coc-settings.json ~/.config/nvim/.coc-settings.json
 
