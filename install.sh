@@ -1,8 +1,9 @@
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.agignore ~/.agignore
-mkdir ~/.vim
-ln -sf ~/dotfiles/.coc-settings.json ~/.vim/.coc-settings.json
+mkdir ~/.config
+mkdir ~/.config/nvim
+ln -sf ~/dotfiles/.config/nvim/.coc-settings.json ~/.config/nvim/.coc-settings.json
 
 cat ~/dotfiles/.zshrc >> ~/.zshrc
 
@@ -12,9 +13,8 @@ fi
 
 sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev
-sudo update-alternatives --remove vim /usr/bin/nvim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PlugInstall +qall
+nvim +PlugInstall +qall
 
 for repo in $(find $HOME/src/github.com/Shopify -maxdepth 1 -mindepth 1); do
   cd $repo
