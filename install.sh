@@ -21,5 +21,5 @@ for repo in $(find $HOME/src/github.com/Shopify -maxdepth 1 -mindepth 1); do
   export GEM_HOME="$HOME/.gem"
   gem install ripper-tags
   export PATH=$PATH:$HOME/.gem/bin
-  $HOME/.gem/bin/ripper-tags -R --exclude=vendor
+  $HOME/.gem/bin/ripper-tags -R --extra=q --exclude=.git --exclude=log --exclude=tmp --exclude=vendor --exclude=node_modules --exclude=.dev . $(bundle list --paths | sed s@`pwd`\/@@)
 done
