@@ -85,6 +85,8 @@ nnoremap <leader>yd :let @*=expand("%:p:h")<CR>
 " vim-test
 let test#strategy = 'neovim'
 let test#neovim#term_position = "vert 80"
+let g:test#neovim#start_normal = 1 " If using neovim strategy
+let g:test#basic#start_normal = 1 " If using basic strategy
 
 " fzf
 " use control c or g to exit
